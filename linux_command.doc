@@ -1,0 +1,733 @@
+ntroduction
+Linux is an open source and popular operating system.
+It is multitasking and multiuser OS.
+It is an open source version of Unix.
+Linux kernal is free downloadable and can modify as per the business need and create our own OS.
+It is easy to learn.
+
+Architecture
+ 
+Hardware
+RAM, CPU, Harddisk, Printers and so on.
+Kernel
+Core part of OS.
+It manages the hardware (RAM, CPU, Harddisk, Printers).
+It is responsible for all the major activities of OS.
+It is written in C language.
+Shell
+It is user interface.
+It interprets the user commands and start the apps.
+Utilities
+System tools are built using system utilities.
+
+Linux OS components
+1)	Boot Loader
+It is one of the mail loaders in Linux.
+It is a program.
+When you switch on Linux machine, it loads the kernel into main memory.
+2)	Kernel
+3)	Daemons
+Background services, that startup during boot.
+It mostly run in the background
+4)	Shell
+5)	System Libraries
+To help accessing kernel features
+6)	Graphical Server
+xhost, xdisplay (call it as x server or x)
+7)	System Tools
+
+Features of Linux
+1)	Multi-User
+2)	Multi-Tasking
+3)	Multi-Programming
+4)	Open Source
+5)	Portable
+6)	Communication
+7)	Security
+8)	Shell
+9)	Help Facility
+10)	Hierarchical File system
+
+Distribution of Linux
+1)	Fedora (Redhat)
+2)	OpenSUSE (SUSE)
+3)	Ubuntu
+4)	Debian
+5)	Slackware
+
+Windows vs Linux
+1)	Price
+2)	License
+3)	Usage
+4)	File System
+5)	Security
+6)	Support
+
+Linux Commands
+cd [change directory]
+1)	export CDPATH
+2)	mkdir -p /home/eswar/project/training
+where, -p creates directory (including subdirectory if it is not present)
+3)	alias ..=”cd ..”
+4)	cd - (toggle between directories – current and last one)
+5)	shopt -s cdspell (autocorrect directory names)
+grep [ Global Regular Expression Print]
+[It is a pattern match command and display the entire line if the pattern is match in that line]
+1)	grep httpd config.xml (where, httpd – pattern and config.xml – filename)
+2)	grep -v httpd config.xml (-v for ignore the matched pattern)
+3)	grep -c httpd config.xml (-c for count)
+4)	grep -cv httpd config.xml (count of unmatched lines)
+5)	grep -i httpd config.xml (ignore case)
+6)	grep -r httpd /home/eswar/ (where, -r display the matched lines along with filenames)
+7)	grep -ril httpd /home/eswar/ (just list down the matching filenames alone)
+8)	grep “^Nov 10” config.xml (matches the starting line if it starts with Nov 10)
+9)	grep “completed$” config.xml (matches the ending line if it ends with completed)
+10)	grep -c “^$” config.xml console.log (counts empty lines from config.xml and console.log)
+11)	grep “.ello” console.log (matches single character in [.] position)
+12)	grep “*.” console.log (matches any number of spaces with single character)
+13)	grep “linux” file* (search string in multiple files)
+14)	grep -iw file.txt (match exact word)
+15)	grep -A 2 -i “linux” file.txt (Display the lines after match)
+16)	grep -B 2 -i “linux” file.txt (Display the lines before match)
+17)	grep -C 2 -i “linux” file.txt (Display the lines around match)
+18)	grep -riL httpd /home/eswar/ (filenames that does not matches the pattern)
+19)	grep -o “linux” file.txt (Display only the matched content)
+20)	grep -n “linux” file.txt (Display the line number)
+21)	grep -o -i -w “linux” file.txt
+22)	egrep “linux|unix|windows” file.txt (Extended Grep [egrep] search with multiple words)
+find (syntax: find [pathname] [condition])
+	-type parameter
+	f: regular file
+d: directory
+	l: symbolic link
+	c: character devices
+	b: block devices
+
+1)	find /home/eswar/ -name “*mail*”
+2)	find /home/eswar/ -iname “*Mail*”
+3)	find /var/log/nginx -type f -name '*.log.gz'
+4)	find /var/log/nginx -type f -not -name '*.log.gz'
+5)	find / type -f -size +100M
+6)	find . -mtime +60 (+ not modified)
+7)	find . -mtime -2 (- modified)
+8)	find / -type f -name *.tar.gz -size +100M -exec ls -f {}\; (listing)
+(delete all archive files with extension “.tar.gz” and greater than 100 MB)
+9)	find / -type f -name *.tar.gz -size +100M -exec rm -f {}\; (removing)
+10)	find /home/eswar -type f -mtime +60|xargs tar –cvf /tmp/`date “+d%m%Y”_archive.tar`
+11)	find /home/eswar/ -type d
+12)	find / -type f -name “*.log”
+13)	find ~ -type f –name “.*” (find hidden files)
+-m (modified time)
+-a (access time)
+14)	find / -mtime 50
+15)	find / -atime 50
+16)	find / -mtime +50 -mtime -100 (find modified files between 50 to 100 days)
+17)	find /ho	me/eswar/ -cmin -60 (modified within last 1 hour)
+18)	find /ho	me/eswar/ -mmin -60 (modified in last 1 hour)
+19)	find /ho	me/eswar/ -amin -60 (accessed in last 1 hour)
+20)	find / -size 50M (file size in 50 MB)
+21)	find / -size +50M -size -100M (file size greater than 50 and less than 100 MB)
+22)	find / -type f -empty (find empty files)
+23)	find / -type d -empty (find empty directories)
+24)	find / -user root (find by its owner)
+25)	find /var/log/ -name `*.temp` -delete
+26)	find / -type f –perm 0664 (find by file permission)
+27)	find / -type f ! –perm 0777
+28)	find ./test -maxdepth 2 -name *.log
+29)	find . -type f -perm 755 -exec chmod 664 (find and change)
+30)	find / -type f -name *.txt -size +10M -exec rm -f {}/;
+where, {} – placeholder of the files that matches and / - representation of command end
+join
+join emp.txt bonus.txt
+cat emp.txt and cat bonus.txt
+tr [ change the case ]
+tr a-z A-Z < emp.txt
+tr A-Z a-z < emp.txt
+xargs
+xargs command takes an output from previous command and pass as an argument to next command
+cat urllist.txt | xargs ls –l
+sort (sort lines of text file)
+sort names.txt (ascending order)
+sort -r names.txt (descending order-reverse order)
+sort -t: -k 2 names.txt (-t delimiter, -k column number)
+uniq (remove or detect duplicate entries in a file)
+sort names.txt | uniq (or) sort -u names.txt
+sort names.txt | uniq -c (unique values with number of times/count no.of occurences)
+sort names.txt | uniq -cd (only duplicate entries)
+uniq -d file.txt (only duplicate lines – only once)
+uniq -D file.txt (duplicate lines – all entries)
+cut (extract portions of text from a file by selecting columns)
+-c for selecting desired column
+cut -c3 file.txt (print only 3rd character)
+cut -c3-7 file.txt (range of characters)
+cut -d',’ --complement -f2 file.txt (except field 2)
+cut -d’,’ -f1,3 --output-delimiter=’|’ file.txt (change output delimiter in cut command output)
+cut -d’,’ -f1,3 --output-delimiter=$’\n’ file.txt (output delimiter as newline)
+$symbol can be used with \n, \t, \r …..
+cut -d: -f 1 names.txt (display the first field – colon delimited). where, -f is field
+cut -c 1-8 names.txt where, -c is character and 1-8  first 8 characters
+paste (merges the lines from multiple files)
+paste file1.txt file2.txt
+change delimiter
+paste -d’-‘ file1.txt file2.txt
+paste -d’|’ file1.txt file2.txt
+print merge result sequentially
+paste -s file1.txt file2.txt
+paste -d’,‘ -s file1.txt file2.txt
+cat file1.txt|paste -- (try this)
+join (combine two files based on a matching fields in the files)
+similar like SQL join
+default join delimiter is space
+join -t, file1.txt file2.txt (-t delimiter)
+join -o 1.2,1.3,2.1,2.2 file1.txt file2.txt (-o passed fields for join) 
+where, 1.2 first file second column, 2.1 second file first column
+stat
+to check the status/properties of a single file or the file system
+display statistics of a file or directory
+stat /etc/config.xml
+stat -f /home/eswar/ (where, -f denotes file system)
+diff
+syntax diff [option] file1 file2
+diff -w config.xml console.log (-w ignore white space)
+output
+<property
+------------ (this line is an intermediate line between changes)
+>properties
+>added property
+< (represents changes in the first file)
+> (represents changes in the second file)
+ac (users connect time) – yum install psacct to use ac command install this package in RHEL)
+ac -d (connect time for current logged in user)
+ac -p (connect time for all users)
+ac -d eswar (connect time for specific user)
+execute commands in the background
+./script.sh & (run in the background but command get killed if current session logged out)
+nohup ./script.sh & (to overcome above issue)
+by using screen command, you can get current closed session
+at -f script.sh 10 am tomorrow (schedule to run at specific time)
+watch df -h (to execute command continuously at certain interval time) 
+sed (find and replace) [ syntax: sed ‘PATTERNs/REGEXP/REPLACEMENT/FLAGS’ filename ]
+sed is a stream editor
+sed ‘ADDRESSs/REGEXP/REPLACEMENT/FLAGS’ filename
+where,  
+s – substitute
+/ - delimiter
+REGEXP – regular expression to match
+REPLACEMENT – value to replace
+
+FLAGS can be any of the below
+g – replace all the matching instances
+n – number (replace nth instance)
+p – if matches print the new pattern
+i – ignore case
+w – if matches, writes result to the file
+
+@    %    ;     :     /
+Delimiters can be: 
+sed ‘s/Linux/Linux-Unix/’ console.log (Replace only first match in every line)
+sed ‘s/Linux/Linux-Unix/g’ console.log (Replace all the matches entry)
+sed ‘s/Linux/Linux-Unix/2’ console.log (Replace only the 2nd match)
+sed ‘s/Linux/Linux-Unix/gpw output’ console.log (Replace all the matches and print and write results to the filename output)
+sed ‘/\-/s/\-.*//g’ console.log (if line matches -, then it replaces all the characters from -)
+sed ‘s/…$//’ console.log (delete last 3 characters from each line)
+sed -e ‘s/#.*//’ console.log (delete all the comment lines)
+sed -e ‘s/#.*// ; /^$/d’ console.log 
+; is separated two commands
+first command: delete all comment lines
+second command: delete blank lines
+
+sed -e ‘s/<[^>]*>//g’ index.html (eliminate html tags)
+sed ‘s/unix/--&--/’ file.txt (& represents given pattern “unix”)  [output: --unix--]
+sed ‘s/unix/--&&--/’ file.txt (& represents given pattern “unix”)  [output: --unixunix--]
+sed ‘2 s/unix/ linux/’ file.txt (only on second line sed works)
+sed ‘2,$ s/unix/ linux/’ file.txt (2,$ - second line to last line)
+sed ‘/unix/a “new line” file.txt (a – append line after match)
+sed ‘/unix/i “new line” file.txt (i – append line before match)
+sed ‘/unix/c “modify line” file.txt (c – change the matched line)
+sed ‘y/ul/UL’ file.txt (lower to upper letters)
+sed ‘y/UL/ul’ file.txt (upper to lower letters)
+awk (aho, weinberger, kernighan)
+awk is a programming language to manipulate structured data and generation of formatted reports.
+Features of awk
+awk views text files as records or fields
+like normal programming language awk has variables and conditions
+awk has arithmetic and string operations
+generate format reports
+awk not work for non-text files (ex: image file)
+syntax1: awk ‘/search pattern1/{actions;}, /search pattern2/{actions;}’ file
+where, pattern and actions both are optional but any one should present in the awk command.
+1)	awk ‘{print ;}’ emp.txt (entire file display)
+2)	awk ‘/Thomas/nisha/’ emp.txt
+3)	awk ‘{print $2,$5;}’ emp.txt
+4)	awk ‘{print $2,$NF;}’ emp.txt (NF – last field)
+syntax2: awk works with BEGIN and END keyword
+BEGIN {Actions}
+{Actions}
+END {Actions}
+awk ‘BEGIN ‘{print “Name/tSalary”;}
+{print $2, “\t”, $5;}
+END {print “Report Generated”}’ emp.txt
+awk ‘$1>200’ emp.txt  (ex: emp ID >200)
+awk ‘$4 ~/Technology/’ emp.txt (employee department is Technology)
+awk ‘BEGIN {count=0;}
+$4 ~/Technology/ {count++;}
+END {print “No.of Emps:”, count;}’ emp.txt
+vi editor
+k – navigate upwards
+j – navigate downwards (ex: 10j – navigate 10 times downwards)
+l – navigate right side
+h – navigate left side
+H – goto first line of the current screen
+M – middle line
+L – last line
+O – start of the current line
+^ - first non-blank character of the line
+$ - end of the current line
+o – last non-blank character of the line
+G – goto end of the file
+g – goto beginning of the file
+/i – search pattern take you to next occurrence
+?i – search pattern take you to previous occurrence
+Navigate from command line
+vi +10 /etc/passwd
+vi +install config.xml (first occurrence)
+vi +?Error console.log (first occurrence from last)
+chmod
+Roles
+u – user
+g – group
+o – others
+
+Permission
+r – read
+w – write
+e – execute
+
+chmod u+x emp.txt
+chmod u+r,g+x emp.txt
+chmod u-rx emp.txt
+( + for adding permission, - for removing permission )
+chmod a+x emp.txt (change permission for all roles)
+chmod -reference=emp.txt emp.txt (same permission to another file)
+chmod -R 755 /home/eswar/ (apply permission to all files in a directory)
+chmod u+x * (change permission only for directory not the files)
+we can use numeric numbers instead of r,w,x
+r=4, w=2, x=1 (4+2+1=7  read write and execute permission)
+chmod 764 file.txt (7 for owner, 6 for group, 4 for others)
+tail (to view the log)
+tail -f error.log
+tail -f access.log
+tail -f error.log -f access.log
+wget (download files from internet)
+wget http://openssl/file.tar.gz
+wget -o taglist.tar http://openssl/file.tar.gz  (output file name as taglist.tar)
+wget --limit-rate=200k http://openssl/file.tar.gz (limit download speed)
+wget -c http://openssl/file.tar.gz (download incomplete downloaded file)
+wget --tries=10 http://openssl/file.tar.gz (retry option set as 10)
+wget -i http://openssl/file.tar.gz (download list of urls from the file)
+wget --reject=gif http://openssl/file.tar.gz (skip gif files from download)
+wget -Q5m -i http://openssl/file.tar.gz (quit download when it exceeds download limit size 5MB)
+wget -r A.pdf http://openssl/file.tar.gz (download only pdf file)
+wget --ftp-user=USERNAME –ftp-password=PASSWORD http://openssl/file.tar.gz
+ssh
+ssh -v cortxusr@UKTILVR (-v to see error log)
+date and time
+date +%T -s “22:19:53”
+date +%T%P -s “10:19:53PM” (to set time only)
+date +”%d-%m-%Y”
+date +”%A,%B %d %Y” (output: Thursday, January 01 2021)
+Previous Date
+date --date=”1 year ago”
+date --date=”10 months 2 days ago”
+Upcoming Date
+date --date=”4 hours”
+date --date=”tomorrow”
+ps1 (default interaction prompt)
+export ps1=”/u/h/w”
+where, /u – username, /h – hostname, /w – full path
+ps2 (continues interactive prompt)
+export ps2 = “continue->”
+export PROMPT_COMMAND=”echo -n [$(date +%H%M%S)]”
+output: [22:08:51] eswar@UKTILVR /home/eswar/
+zip [syntax: zip {.zip filename} {file names}
+zip logfile.zip /var/logs/*
+zip -r logfile.zip /var/log/ (-r zip a directory and its files)
+unzip logfile.zip
+unzip -v logfile.zip (-v verbose)
+unzip -l logfile.zip (list content of zip file)
+10 levels in compression (0-low, 6-default, 9-high. 9th level is slower than default – use for large file)
+unzip -t logfile.zip (validate archive)
+zip -P password logfile.zip /var/logs/* (-P password protection)
+tar (tape archive) – used to convert group of files into an archive
+syntax: tar [options] [tar-archive-name] [other-file-names]
+tar cvf logfile /var/logs/
+where, c-create archive, v-verbose, f-archive file name
+tar tvf logfile.tar (to list/view all the files inside tar)
+tar xvf logfile.tar (x refers extract)
+tar xvfz lofgile.tar.gz -c /home/eswar/ (z represents – to extract gz file)
+tar -xvf logfile.tar notes.txt (extract single file)
+tar -xvf logfile.tar notes.txt names.txt (extract multiple files)
+tar -rvf logfile.tar abc.txt (r – append files into the existing archive tar)
+history
+history | more
+!4 (execute 4th command from the previous history command output)
+export HISTTIMEFORMAT = ‘%F%T’ (display timestamp in history)
+!! (repeat previous command)
+!10 (repeat 10th command in the history)
+!-2 (repeat 2nd command from the last)
+!string (repeat the command that starts with string)
+!?string (repeat the command that has a word string)
+!!:$ (get the last argument from the previous command)
+wildcards
+ls a* (list all the files starting with a)
+ls b*t (list files starts with b and ends with t)
+ls *g (files end with g)
+ls *.txt (all text files)
+ls */* (all files in current directory)
+ls a?c (3 characters length, ? represents single character)
+ls b??k (4 characters length starts with b and ends with k)
+ls [k-v]* (starts letter between k and v]
+ls *[0-9]* (file names contain number)
+ls [aeiou]* (file names start with vowels)
+ls [!aeiou]* (file names not start with vowels)
+mount
+create a directory where the partition should be mounted.
+even after formatting the partition, we can’t use the partition. 
+In order to use the partition, it is required to be mounted.
+Mounting is attaching an additional file system to the currently accessible file system.
+mkdir /home/db
+mount /dev/sda1 /home/db (mount the file system)
+/dev/sda1 /home/db ext3 defaults 0 2 
+(to mount the file system automatically after the system reboot, add the above entry in /etc/fstab location)
+create/delete user
+root user, system user(mail,sshd), normal user
+useradd eswar
+adduser -c “user for automation” -e 12/31/2022 eswar
+where, (-c description, -e expiry date)
+chage -l eswar (check password expiry details)
+chage -E -1 eswar (set password as never expiry)
+grep eswar /etc/passwd (verify the added user)
+passwd eswar (change the password)
+useradd -D (default values of useradd)
+useradd -d /home/eswar eswar (add user with home directory)
+userdel eswar
+userdel -f eswar (delete user even if he still logged in)
+userdel -r eswar (delete user along with home directory)
+less /etc/passwd (to list down the users in the Linux machine)
+create new group
+groupadd automation
+grep automation /etc/group
+useradd -G automation eswar (add user to the existing group) - o/p: user eswar exist
+useradd -g automation eswar
+grep eswar /etc/passwd
+ssh passwordless login
+ssh-key-gen (create public and private keys using this command in local machine)
+ssh-key-id -i ~/.ssh/id_rsa.pub remote-host
+enter remote password:
+ssh remote-host (will login without password)
+crontab (syntax: *  * * * *)
+(minute 0-59, hour 0-23, day of month 0-31, month 0-12, day of week 0-7)
+*/5 * * * *
+20 11 * * 1,2,3,4,5 (or) 20 11 * * 1-5
+crontab -e (edit)
+crontab -l (list)
+crontab -r (remove everything from crontab)
+crontab -ir (this will prompt before delete)
+30 1 * * * command/script > /dev/null 2>&1 (redirect output and error)
+anacron
+It is for desktop and laptops.
+It will execute job even if the machine is not running for 24*7.
+It will be executed once the laptop/desktop is running, if it was shut down earlier.
+Crontab	Anacron
+can be scheduled for every minute (minimum value is minute)	Can be scheduled every day (minimum value is day)
+can be scheduled by normal user	Only root user can schedule
+Ideal for servers	Ideals for laptop/desktop
+yum
+yum install nginx
+yum -y install nginx (skip yes/no option)
+yum remove nginx
+yum update nginx (update existing nginx package)
+yum search locate (search package name)
+rpm (Redhat Package Manager)
+rpm -ivh mysql-client.rpm
+where, i-install v-verbose h-has mark completion status
+once it is done (this will install rpm package). then use yum to install the package.
+yum install mysql-client (this will work now)
+apt
+apt-cache search ^apache2$
+dpkg -l | grep –i apache (check if the package is already installed)
+sudo apt-get install apache2
+sudo apt-get purge apache2 (or) sudo apt-get remove apache2
+install from source
+tar xvfi app.tar.gz 
+cd app
+./configure –help
+./configure (this will create makefile for installation
+make (this will create library executable)
+make install (this will install the app)
+chkconfig apache2 on (configure apache2 to start automatically during system startup)
+
+Shell Scripting
+for loop (c style)
+for ((i=1;i<=3;i++))
+do
+echo “random number $i: $RANDOM”
+done
+infinite for loop (c style)
+i=1
+for ((;;))
+do
+sleep $i
+echo “Number: $((i++))”
+done
+for loop two initialization & 2 increment but 1 condition
+for((i=1,j=10;i<=5;i++,j=j+5))
+do
+echo “number $i:$j”
+done
+debug shell script
+sh -xv /home/eswar/backup.sh (or) set -xv (inside shell script after seabang line)
+read data
+cat emp.txt
+Eswar:100:Madurai
+Kutty:95:Virudhunagar
+Munees:905:Sivakasi
+sh file
+#! /bin/sh/
+IFS=’:’
+while read name id loc
+do
+echo “$name and $loc”
+done<emp.txt
+Monitoring
+free -mto
+top (to see additional details press f)
+df -h
+df -Tha
+du -sh -
+lsof (list of open files)
+lsof | wc -l
+lsof -u eswar (open file for specific user)
+vmstat (typical performance monitoring command)
+kill
+ps
+30 Basic Commands
+1)	ls
+ls -ltr
+ls -a
+ll
+2)	pwd
+3)	cd
+cd ..
+cd ~
+cd -
+4)	cp
+5)	mv
+6)	touch
+7)	cat
+cat > file.txt (overwrite)
+cat >> file.txt (append)
+8)	mkdir
+9)	rm
+rm -f (remove forcefully) 
+rm -r
+10)	rmdir (remove empty directory)
+11)	ln
+ln -s /home/eswar/file/file1.txt file1.txt  (-s symbolic link)
+ln /home/eswar/file/file1.txt /etc/filedir/file1.txt (hardlink – it is like another copy)
+12)	head
+head file1.txt (display 1st 10 lines)
+head -30 file1.txt
+13)	tail
+tail file1.txt (display last 10 lines)
+tail -25 file1.txt
+tail -30 file1.txt | head  (display middle lines)
+head -30 file1.txt | tail  (display middle lines)
+14)	wc
+wc -c file1.txt (count bytes)
+wc -m file1.txt (count characters)
+wc -l file1.txt (count lines)
+wc -w file1.txt (word count)
+wc -L file1.txt (print the length of longest line)
+15)	vi
+16)	view (view file1.txt – view file as read-only)
+17)	more
+view text files in one screen at a time. Can be scrolled up and down.
+options – (-d, -f, -p, -s, -c, -u, +/search, +30)
+18)	less
+view file contents page by page. It will not access complete file but access page by page
+less file1.txt
+file1.txt|less -p failure (pattern match with failure)
+faile1.txt|less -N (display file contents with line numbers)
+19)	date
+20)	cal
+21)	w (to who logged  in and what are they doing)
+22)	ps
+23)	top
+24)	kill
+25)	df
+26)	du
+du -s file1.txt
+du -sh *
+27)	free
+28)	su (switch user)
+29)	locate (similar like find command but it is easy and fast)
+30)	exit
+Hardware Info
+cat /proc/cpuinfo
+cat /proc/meminfo
+cat /proc/version
+lshw (list hardware components)
+fdisk -l (partition table manipulator)
+Terminal Shortcut
+ctrl+c (terminate current command)
+ctrl+z (suspend current command, resume with fg and bg)
+ctrl+d (logout current session like exit)
+ctrl+w (erase one word in current line)
+ctrl+u (erase whole line)
+alt+r (restore the changes in the line)
+!! (repeat the last command)
+ctrl+a (go to beginning of the file)
+ctrl+e (go to end of the file)
+ctrl+l (clear screen)
+ctrl+h (backspace)
+alt+f (move cursor forward)
+alt+b (move cursor backward)
+Directory Structure
+/ (root directory)
+/bin (executable files are located here & available for all users)
+/dev (It contains references to all the CPU peripheral hardware)
+/etc (important config files for all apps like control panel in windows)
+/lib (library files for all kind of programs needed by the system and users)
+/root (root directory)
+/home (home directory for common users)
+/boot (It has the file for booting the system)
+/proc (all processes considerable as file by process number)
+/tmp (temp files, cleaned upon reboot)
+/usr (programs, libraries, documents for all user-related programs)
+/var (store all variables files & temp files created by users)
+/sbin (binary executable files, used by system and system administrator)
+Basic Admin Tasks
+init   init 6 (for reboot server)
+ping (to check connectivity)
+ping 10.196.150.79
+ping -i 5 10.196.150.79 (increase/decrease -i interval between ping packets)
+ping -s 100 10.196.150.79 (-s change packet size. default 64 bytes)
+ping -c 5 10.196.150.79 (ping desired number of packets)
+ping -w 5 10.196.150.79 (set ping timeouts)
+traceroute (tracks the route packets taken from an IP network to the given host)
+traceroute google.com
+tracepath (similar to traceroute but it does not require super user privilege)
+nslookup (to query domain name servers and also to print list of hosts in a domain)
+netstat (print network connections, routing tables, interface statistics….)
+route (manipulates the kernel IP’s routing tables)
+strace (diagnostic, instructional and debugging tool)
+tcpdump
+prints a description of the contents of packets on a network interface that matches boolean expression
+service (It is a program that runs in the background)
+Ex: Apache is a daemon called httpd running in the port 80
+				     Services
+
+service								chkconfig
+(to start, stop a service during a session)		(to start, stop a service while booting the server)
+service service-name status
+service service-name start
+service service-name stop
+service service-name reload
+service service-name restart
+chkconfig --list  (check availability of services)
+chkconfig service-name on (service available after reboot)
+chkconfig service-name off (service unavailable after reboot)
+Processes
+ps (display current working process)
+ps ax (display all processes)
+ps -ef -f (-f to display more details about processes)
+ps -ef -u eswar (display processes by user)
+ps -c httpd (show process by name)
+ps -f -p 2609, 2704 (show process by ID)
+ps -ef|grep java
+top
+kill -9 PID
+killall -9 firefox
+pkill -USRI httpd (kill all process by matching pattern)
+Package Management
+Debian/Ubuntu
+apt-cache packagenames (list available packages)
+apt-cache search apache2 (find packagename)
+apt-cache show apache2 (check package information)
+apt-cache showpkg apache2 (check dependencies for specific packages)
+sudo apt-get update -y
+sudo apt-get upgrade -y 
+sudo apt-get install apache2 -y
+sudo apt-get install apache2 wget curl –y (install or upgrade both possible in it)
+sudo apt-get install ‘php*’ (install several packages)
+sudo apt-get install python -no-upgrade (install package without upgrade)
+sudo apt-get install python -only-upgrade (only upgrade not install)
+sudo apt-get remove apache2 (remove package without configuration)
+sudo apt-get purge apache2 (completely remove packages)
+Redhat/Centos
+yum – Yellowdog Updates Modifier
+yum install firefox
+yum -y install firefox
+yum remove firefox
+yum -y remove firefox
+yum update mysql
+yum list openssh
+yum list openssh-4.3p2
+yum search apache2
+yum info firefox
+yum list | less
+yum list installed | less
+yum check-update
+yum update
+yum repolist
+yum repolist all
+yum –enablerepo=rpel install phpmyadmin
+yum clean all
+yum history
+RPM – Redhat Package Manager
+rsync over ssh
+with rsync we can use SSH for data transfer
+data can be transferred in secure way over the wired network
+FTP – File Transfer Protocol
+NFS – Network File System
+Basic Linux Utilities
+	Calendar
+	Calculator
+	Email
+	Printing
+Calendar
+cal (current month)
+cal 02 2018 (2nd month 2018)
+cal -3 (previous, current and next month)
+cal -y (entire year calendar)
+cal -y 2010 (or) cal 2010
+ncal (display the vertical calendar)
+ncal -w (display week numbers)
+ncal -j (display the day of year in numbers)
+Calculator
+bc (command for using calculator)
+bc -l (to use math standard library)
+echo ‘33+293’ | bc
+bc command supports below
+increment/decrement operators
+assignment operators
+comparison operators
+logical operators
+math functions
+conditional statements
+echo “a=10;++a” | bc (output: 11)
+echo “a=10;a++,a” | bc (output:10 11)
+echo “a=10;--a” | bc (output: 9)
+echo “a=10;a--,a” | bc (output:10 9)
+echo “a=100;b=78;a=a-b;a” | bc (output: 22)
+echo “a=100; a=a^2;a” | bc (output: 10000)
+echo “a=134;b=120;a<b” | bc (output: 0)
+echo “a=134;b=120;a>b” | bc (output: 1)
+echo “a=1;b=3;c=7;a<b && b>c” | bc (output: 0)
+echo “x=225;sqrt(x)” | bc -l (output: 5.0000000)
+Mail
+echo “hello” | mail -s “test” mail-ID
+
+command used to save the file but remain file in edit mode of vi editor is “:w”
+
