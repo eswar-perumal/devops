@@ -1,0 +1,76 @@
+
+DevOps
+	[development + operations] = DevOps
+	By combining dev and ops we can achieve the below
+	Agility
+	Quality
+	Consistency
+	DevOps change the culture of traditional method like waterfall and agile
+	DevOps provides optimized output as it combines dev and ops team efficiently
+Cloud
+	Global network of remote servers
+	They are not physical entity
+	They operate as a single ecosystem
+Important Keywords
+	Agile
+o	Foundation of Agile
+o	How it works
+	Quality
+o	CI/CD quality
+	Scale of Instructure
+o	Different systems design patterns and architecture (Ex: Netflix, Amazon, Google, etc.,)
+	Caching
+	Case Studies
+	Vertical or Horizontal Scaling
+	CDN
+	Availability
+
+Linux
+	Understand the Operating System (RHEL, CentOS)
+	Installing packages and Base Linux Commands
+	Important Commands (top, free, vmstat, iostat, lsof, fdisk, fstab)
+Basic of Bash/Python
+	Shell Variables
+	PATH, Aliases, fork()
+	File Descriptors
+Bash Scripting
+	Loops, Conditions, etc.,
+Crontab
+Basics of Python programming
+	Functions
+	OOPs
+
+Understanding DNS
+Understanding HTTP
+	Status Codes (Ex: 1xx, 2xx, 3xx, 4xx, 5xx)
+Web Servers
+	Apache
+	Nginx
+	IIS
+Reverse Proxy (Nginx)
+Load Balancers
+	Layer4 vs Layer7 (very important)
+	HA Proxy, Nginx
+(Round Robin, Least-Connected, IP-Hash are supported in Nginx)
+Continues Integration
+	GIT – commands
+	Jenkins
+o	Integrating with GIT
+o	Jenkins as a code
+o	Maven/Gradle build on Jenkins
+Configuration Management – Ansible
+Virtualization
+	What is virtualization
+	Types of virtualization
+o	Bare-Metal (Eg: Xen, KVM, etc.,)
+o	Hosted (Eg: Virtual Box, Vmware, etc.,)
+Docker
+	GKE, EKS
+	Sample website using docker
+Monitoring – App Dynamics, cloud watch(AWS)
+Logging
+	Syslog
+	Remote logging
+	ELK setup
+Cloud – AWS or GCP
+
